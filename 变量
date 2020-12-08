@@ -1,0 +1,74 @@
+php的变量以$开头，可以是x,y,z等，也可以是age,year等
+变量名必须以字母或者下划线字符开始
+变量名不能有空格，变量只能用数字，字母以及下划线。
+且变量区分大小写
+php的语句也是区分大小写的
+创建变量：
+$a=123;
+$text="hello world";
+$b=3.14;
+
+在函数外部的变量称为全局变量（global）
+全局变量可以在任意位置被访问到
+在函数内部声明的变量只能在函数内部访问。
+在函数内部访问全局变量是要用global标明
+<?php
+$x=5;
+$y=10;
+ 
+function myTest()
+{
+    global $x,$y;
+    $y=$x+$y;
+}
+ 
+myTest();
+echo $y; // 输出 15
+?>
+
+PHP 将所有全局变量存储在一个名为 $GLOBALS[index] 的数组中。
+index 保存变量的名称。
+这个数组可以在函数内部访问，也可以直接用来更新全局变量。
+
+ <?php
+$x=5;
+$y=10;
+ 
+function myTest()
+{
+    $GLOBALS['y']=$GLOBALS['x']+$GLOBALS['y'];
+} 
+ 
+myTest();
+echo $y;
+?>
+
+static作用域：
+当一个函数被完成时，他内部的变量通常会被删除。
+如果一样某个函数不被删除，在第一次声明变量时使用static标明：
+<?php
+function myTest()
+{
+    static $x=0;
+    echo $x;
+    $x++;
+    echo PHP_EOL;    // 换行符
+}
+ 
+myTest();
+myTest();
+myTest();
+?>
+
+然后，每次调用该函数时，该变量将会保留着函数前一次被调用时的值。
+
+参数是通过调用代码将值传递给函数的局部变量。
+
+参数是在参数列表中声明的，作为函数声明的一部分：
+<?php
+function myTest($x)
+{
+    echo $x;
+}
+myTest(5);
+?>
