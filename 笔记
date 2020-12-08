@@ -1,0 +1,25 @@
+php脚本格式:<?php
+
+//php代码
+?>
+
+php脚本可放在任何位置。
+php的每个代码必须以分号结束。用于区分指令集。
+php的输出语句：print和echo
+下列语句可以在浏览器上输出
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My first PHP page</h1>
+
+<?php
+echo "Hello World!";
+?>
+
+</body>
+</html>
+
+php注释，单行：//  注释
+多行/*     */
