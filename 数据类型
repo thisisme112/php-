@@ -1,0 +1,8 @@
+字符串：是一串字符的序列
+        可以将任何文本放在单引号或双引号中：
+<?php
+$x = "Hello world!";
+echo $x;
+$y = 'Hello world'
+
+?>
