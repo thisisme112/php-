@@ -1,0 +1,23 @@
+松散比较： == 只比较值，不比较类型。
+严格比较： ===除了比较值，也比较类型。
+
+0 == false: bool(true)
+0 === false: bool(false)
+
+0 == null: bool(true)
+0 === null: bool(false)
+
+false == null: bool(true)
+false === null: bool(false)
+
+"0" == false: bool(true)
+"0" === false: bool(false)
+
+"0" == null: bool(false)
+"0" === null: bool(false)
+
+"" == false: bool(true)
+"" === false: bool(false)
+
+"" == null: bool(true)
+"" === null: bool(false)
