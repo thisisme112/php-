@@ -6,3 +6,70 @@ echo $x;
 $y = 'Hello world'
 
 ?>
+
+整型：整数规则：
+      整数必须至少有一个数字（0-9）
+      整数不能包含逗号或空格
+      整数是没有小数点的
+      整数可以是正数或负数
+      整型可以用三种格式来指定：十进制， 十六进制（ 以 0x 为前缀）或八进制（前缀为0）
+php中可以用var_dump()返回变量的数据类型和值
+<?php
+$x = 250;
+var_dump($x);
+$x = -250;//负数
+$x = 0x8C; // 十六进制数
+
+
+?>
+
+
+浮点型：小数或指数形式
+<?php
+$x = 10.365;
+var_dump($x);
+$x = 2.4e3;
+var_dump($x);
+
+
+?>
+
+
+php布尔型:
+$x=true;
+$y=false;
+
+
+php数组:
+<?php
+$cars=array("Volvo","BMW","Toyota");
+var_dump($cars);
+?>
+
+
+php对象
+       对象也可以用于储存数据。
+       使用class关键字声明类对象。类是可以包含属性和方法的结构。
+<?php
+class Car
+{
+   var $color;
+   function__construct($color="green"){
+     $this->color = $color;
+   }
+   function what_color(){
+     return $this->color;
+   }
+}
+?>  
+上实例中PHP关键字this就是指向当前对象实例的指针，不指向任何其他对象或类
+
+php null值
+NULL 值表示变量没有值。NULL 是数据类型为 NULL 的值。
+
+NULL 值指明一个变量是否为空值。 同样可用于数据空值和NULL值的区别。
+<?php
+$x="Hello world!";
+$x=null;
+var_dump($x);
+?>
