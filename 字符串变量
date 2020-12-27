@@ -1,0 +1,22 @@
+<?php
+$txt="Hello world!";
+echo $txt;
+?>
+
+PHP 并置运算符
+用（.）把两个字符串值连接起来
+
+<?php
+$txt1="Hello world!";
+$txt2="What a nice day!";
+echo $txt1 . " " . $txt2;
+?>
+
+PHP strlen() 函数
+
+用来返回字符串的长度（字节数）。
+
+<?php
+echo strlen("Hello world!");
+?>
+输出12
