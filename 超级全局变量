@@ -1,0 +1,130 @@
+PHP中预定义了几个超级全局变量（superglobals） ，这意味着它们在一个脚本的全部作用域中都可用。 你不需要特别说明，就可以在函数及类中使用。
+
+PHP 超级全局变量列表:
+
+$GLOBALS
+$_SERVER
+$_REQUEST
+$_POST
+$_GET
+$_FILES
+$_ENV
+$_COOKIE
+$_SESSION
+
+
+$GLOBALS:  <?php 
+$x = 75;
+$y = 25; 
+
+function addition()
+{
+$GLOBALS['z'] = $GLOBALS['x'] + $GLOBALS['y'];
+}
+
+addition();
+echo $z;
+?>
+
+结果---> 100
+
+
+$_SERVER :
+是一个包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组。
+这个数组中的项目由 Web 服务器创建。
+不能保证每个服务器都提供全部项目；服务器可能会忽略一些，或者提供一些没有在这里列举出来的项目
+<?php 
+echo $_SERVER['PHP_SELF']; 
+echo "<br>";
+echo $_SERVER['SERVER_NAME'];
+echo "<br>";
+echo $_SERVER['HTTP_HOST'];
+echo "<br>";
+echo $_SERVER['HTTP_REFERER'];
+echo "<br>";
+echo $_SERVER['HTTP_USER_AGENT'];
+echo "<br>";
+echo $_SERVER['SCRIPT_NAME'];
+?>
+/try/demo_source/demo_global_server.php
+www.runoob.com
+www.runoob.com
+https://www.runoob.com/try/showphp.php?filename=demo_global_server
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+/try/demo_source/demo_global_server.php
+
+PHP $_REQUEST:PHP $_REQUEST 用于收集HTML表单提交的数据。
+
+以下实例显示了一个输入字段（input）及提交按钮(submit)的表单(form)。
+当用户通过点击 "Submit" 按钮提交表单数据时, 表单数据将发送至<form>标签中 action 属性中指定的脚本文件。
+在这个实例中，我们指定文件来处理表单数据。
+如果你希望其他的PHP文件来处理该数据，你可以修改该指定的脚本文件名。 
+然后，我们可以使用超级全局变量 $_REQUEST 来收集表单中的 input 字段数据
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+Name: <input type="text" name="fname">
+<input type="submit">
+</form>
+
+<?php 
+$name = htmlspecialchars($_REQUEST['fname']); 
+echo $name; 
+?>
+
+</body>
+</html>
+
+网页会请求输入一个Name，然后输出此Name
+
+
+PHP $_POST :
+被广泛应用于收集表单数据，在HTML form标签的指定该属性："method="post"。
+以下实例显示了一个输入字段（input）及提交按钮(submit)的表单(form)。
+当用户通过点击 "Submit" 按钮提交表单数据时, 表单数据将发送至<form>标签中 action 属性中指定的脚本文件。
+在这个实例中，我们指定文件来处理表单数据。
+如果你希望其他的PHP文件来处理该数据，你可以修改该指定的脚本文件名。
+然后，我们可以使用超级全局变量 $_POST 来收集表单中的 input 字段数据:
+<!DOCTYPE html>
+<html>
+<body>
+
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+Name: <input type="text" name="fname">
+<input type="submit">
+</form>
+
+<?php 
+$name = htmlspecialchars($_POST['fname']); 
+echo $name; 
+?>
+
+</body>
+</html>
+
+运行结果同上
+PHP $_GET 
+同样被广泛应用于收集表单数据，在HTML form标签的指定该属性："method="get"。
+$_GET 也可以收集URL中发送的数据。
+<html>
+<body>
+
+<a href="test_get.php?subject=PHP&web=runoob.com">Test $GET</a>
+
+</body>
+</html>
+当用户点击链接 "Test $GET", 参数 "subject" 和 "web" 将发送至"test_get.php",
+你可以在 "test_get.php" 文件中使用 $_GET 变量来获取这些数据。
+<html>
+<body>
+ 
+<?php 
+echo "Study " . $_GET['subject'] . " @ " . $_GET['web'];
+?>
+ 
+</body>
+</html>
+结果：Study PHP @ runoob.com
