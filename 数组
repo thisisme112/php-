@@ -1,0 +1,78 @@
+数组能够在单个变量中存储多个值：
+<?php
+$cars=array("Volvo","BMW","Toyota");
+echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
+?>
+
+用引号和逗号分隔开每个项
+数组可以在单个变量中存储多个值，并且您可以根据键访问其中的值。
+在 PHP 中，array() 函数用于创建数组
+array();
+
+在 PHP 中，有三种类型的数组：
+
+  数值数组 - 带有数字 ID 键的数组
+  关联数组 - 带有指定的键的数组，每个键关联一个值
+  多维数组 - 包含一个或多个数组的数组
+
+这里有两种创建数值数组的方法：
+
+自动分配 ID 键（ID 键总是从 0 开始）
+$cars=array("Volvo","BMW","Toyota");
+
+人工分配 ID 键：
+$cars[0]="Volvo";
+$cars[1]="BMW";
+$cars[2]="Toyota";
+获取数组的长度 - count() 函数
+count() 函数用于返回数组的长度（元素的数量）
+
+<?php
+$cars=array("Volvo","BMW","Toyota");
+echo count($cars);
+?>
+结果为3
+
+遍历数值数组
+
+打印数组中的值：
+<?php
+$cars=array("Volvo","BMW","Toyota");
+$arrlength=count($cars);
+ 
+for($x=0;$x<$arrlength;$x++)
+{
+    echo $cars[$x];
+    echo "<br>";
+}
+?>
+
+PHP 关联数组：
+这里有两种创建关联数组的方法
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+
+$age['Peter']="35";
+$age['Ben']="37";
+$age['Joe']="43";
+#注意括号
+<?php
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+echo "Peter is " . $age['Peter'] . " years old.";
+?>
+
+结果为：Peter is 35 years old.
+<?php
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+ 
+foreach($age as $x=>$x_value)
+{
+    echo "Key=" . $x . ", Value=" . $x_value;
+    echo "<br>";
+}
+?>
+结果：Key=Peter, Value=35
+Key=Ben, Value=37
+Key=Joe, Value=43
+
+
+
