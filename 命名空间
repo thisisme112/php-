@@ -1,0 +1,109 @@
+定义命名空间
+默认情况下，所有常量、类和函数名都放在全局空间下，就和PHP支持命名空间之前一样。
+
+命名空间通过关键字namespace 来声明。
+如果一个文件中包含命名空间，它必须在其它所有代码之前声明命名空间。语法格式如下；
+<?php  
+// 定义代码在 'MyProject' 命名空间中  
+namespace MyProject;  
+ 
+// ... 代码 ...  
+
+也可以在同一个文件中定义不同的命名空间代码：
+<?php  
+namespace MyProject;
+
+const CONNECT_OK = 1;
+class Connection { /* ... */ }
+function connect() { /* ... */  }
+
+namespace AnotherProject;
+
+const CONNECT_OK = 1;
+class Connection { /* ... */ }
+function connect() { /* ... */  }
+?>  
+
+建议使用大括号：
+<?php
+namespace MyProject {
+    const CONNECT_OK = 1;
+    class Connection { /* ... */ }
+    function connect() { /* ... */  }
+}
+
+namespace AnotherProject {
+    const CONNECT_OK = 1;
+    class Connection { /* ... */ }
+    function connect() { /* ... */  }
+}
+?>
+将全局的非命名空间中的代码与命名空间中的代码组合在一起，只能使用大括号形式的语法。
+全局代码必须用一个不带名称的 namespace 语句加上大括号括起来
+
+<?php
+namespace MyProject {
+
+const CONNECT_OK = 1;
+class Connection { /* ... */ }
+function connect() { /* ... */  }
+}
+
+namespace { // 全局代码
+session_start();
+$a = MyProject\connect();
+echo MyProject\Connection::start();
+}
+?>
+
+在声明命名空间之前唯一合法的代码是用于定义源文件编码方式的 declare 语句。
+所有非 PHP 代码包括空白符都不能出现在命名空间的声明之前。
+
+<?php
+declare(encoding='UTF-8'); //定义多个命名空间和不包含在命名空间中的代码
+namespace MyProject {
+
+const CONNECT_OK = 1;
+class Connection { /* ... */ }
+function connect() { /* ... */  }
+}
+
+namespace { // 全局代码
+session_start();
+$a = MyProject\connect();
+echo MyProject\Connection::start();
+}
+?>
+以下代码会出现语法错误：
+<html>
+<?php
+namespace MyProject; // 命名空间前出现了“<html>” 会致命错误 -　命名空间必须是程序脚本的第一条语句
+?>
+子命名空间
+与目录和文件的关系很像，PHP 命名空间也允许指定层次化的命名空间的名称。
+因此，命名空间的名字可以使用分层次的方式定义：
+
+<?php
+namespace MyProject\Sub\Level;  //声明分层次的单个命名空间
+
+const CONNECT_OK = 1;
+class Connection { /* ... */ }
+function Connect() { /* ... */  }
+?>
+
+上面的例子创建了常量 MyProject\Sub\Level\CONNECT_OK，
+类 MyProject\Sub\Level\Connection 
+函数 MyProject\Sub\Level\Connect
+
+PHP支持两种抽象的访问当前命名空间内部元素的方法，__NAMESPACE__ 魔术常量和namespace关键字。
+
+常量__NAMESPACE__的值是包含当前命名空间名称的字符串。
+在全局的，不包括在任何命名空间中的代码，它包含一个空的字符串。
+
+__NAMESPACE__ 示例, 在命名空间中的代码
+
+<?php
+namespace MyProject;
+
+echo '"', __NAMESPACE__, '"'; // 输出 "MyProject"
+?>
