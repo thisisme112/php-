@@ -1,0 +1,69 @@
+创建函数
+<?php
+function functionName()
+{
+    // 要执行的代码
+}
+?>
+
+<?php
+function writeName()
+{
+    echo "Kai Jim Refsnes";
+}
+ 
+echo "My name is ";
+writeName();
+?>
+----------> My name is Kai Jim Refsnes
+
+为了给函数添加更多的功能，我们可以添加参数，参数类似变量。
+参数就在函数名称后面的一个括号内指定。
+
+<?php
+function writeName($fname)
+{
+    echo $fname . " Refsnes.<br>";
+}
+ 
+echo "My name is ";
+writeName("Kai Jim");
+echo "My sister's name is ";
+writeName("Hege");
+echo "My brother's name is ";
+writeName("Stale");
+?>
+My name is Kai Jim Refsnes.
+My sister's name is Hege Refsnes.
+My brother's name is Stale Refsnes.
+
+两个参数：
+<?php
+function writeName($fname,$punctuation)
+{
+    echo $fname . " Refsnes" . $punctuation . "<br>";
+}
+ 
+echo "My name is ";
+writeName("Kai Jim",".");
+echo "My sister's name is ";
+writeName("Hege","!");
+echo "My brother's name is ";
+writeName("Ståle","?");
+?>
+
+My name is Kai Jim Refsnes.
+My sister's name is Hege Refsnes!
+My brother's name is Ståle Refsnes?
+
+<?php
+function add($x,$y)
+{
+    $total=$x+$y;
+    return $total;
+}
+ 
+echo "1 + 16 = " . add(1,16);
+?>
+
+输出1 + 16 = 17
