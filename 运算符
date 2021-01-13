@@ -24,3 +24,46 @@ var_dump(intdiv(10, 3));
            x=6
            y=3
            (x==6 xor y==3) 返回 false
+
+数组运算   x + y x和y的集合
+           x == y 如果 x 和 y 具有相同的键/值对，则返回 true
+           x === y 如果 x 和 y 具有相同的键/值对，且顺序相同类型相同，则返回 true
+           x != y 如果 x 不等于 y，则返回 true
+           x <> y 同上
+           x !== y 如果 x 不等于 y，则返回 true
+
+三元运算符： 结构： (expr1) ? (expr2) : (expr3) 
+  expr1为true时值为expr2 为 false 时 值时expr3 
+  自 PHP 5.3 起，可以省略三元运算符中间那部分。
+  表达式 expr1 ?: expr3 在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。
+  
+ <?php
+$test = '菜鸟教程';
+// 普通写法
+$username = isset($test) ? $test : 'nobody';
+echo $username, PHP_EOL;
+ 
+// PHP 5.3+ 版本写法
+$username = $test ?: 'nobody';
+echo $username, PHP_EOL;
+?>
+
+PHP_EOL 是一个换行符，兼容更大平台。
+
+在 PHP7+ 版本多了一个 NULL 合并运算符 ??
+<?php
+// 如果 $_GET['user'] 不存在返回 'nobody'，否则返回 $_GET['user'] 的值
+$username = $_GET['user'] ?? 'nobody';
+// 类似的三元运算符
+$username = isset($_GET['user']) ? $_GET['user'] : 'nobody';
+?>
+
+PHP7+的组合比较服（太空船操作符）  <=>  用于比较两个变量
+格式： $c = $a <=> $b;
+
+如果 $a > $b, 则 $c 的值为 1。
+如果 $a == $b, 则 $c 的值为 0。
+如果 $a < $b, 则 $c 的值为 -1
+即 -1  0  1
+  
+  
